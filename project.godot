@@ -47,6 +47,19 @@ shoot={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+3d_physics/layer_1="WorldBorders"
+3d_physics/layer_2="Players"
+3d_physics/layer_3="Enemies"
+3d_physics/layer_4="PlayerAttack"
+3d_physics/layer_5="EnemyAttack"
+
 [rendering]
 
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.101961, 0.117647, 0.172549, 1)

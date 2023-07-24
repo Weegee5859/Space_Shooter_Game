@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwydppvv5gfoi"]
+
+[ext_resource type="PackedScene" uid="uid://ogm4aeymx1in" path="res://Bullets/bullet.tscn" id="1_axfx5"]
+[ext_resource type="Script" path="res://Bullets/enemy_bullet.gd" id="2_byg04"]
+
+[node name="EnemyBullet" instance=ExtResource("1_axfx5")]
+script = ExtResource("2_byg04")
+speed = 8.0
+rotateSelf = false
+
+[node name="Area3D" parent="." index="0"]
+collision_layer = 16
+collision_mask = 2

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2j2dqhf8jjx"]
+
+[ext_resource type="Script" path="res://Enemies/EnemySpawner.gd" id="1_2k3c1"]
+
+[node name="EnemySpawner" type="Node3D"]
+script = ExtResource("1_2k3c1")
+
+[node name="SpawnCooldownTimer" type="Timer" parent="."]
+one_shot = true

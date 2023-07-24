@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5m0g0yo0410f"]
+
+[ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_6vgfj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_voxob"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k2lba"]
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_6vgfj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_voxob")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_k2lba")
+
+[node name="shootTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="timeout" from="shootTimer" to="." method="_on_shoot_timer_timeout"]
