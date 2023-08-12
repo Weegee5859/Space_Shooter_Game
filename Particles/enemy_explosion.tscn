@@ -1,0 +1,82 @@
+[gd_scene load_steps=15 format=3 uid="uid://5bev6p3ha47j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsw3r"]
+
+[sub_resource type="Curve" id="Curve_whgt8"]
+max_value = 360.0
+_data = [Vector2(0, -360), 0.0, 0.0, 0, 0, Vector2(1, 229.091), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lml1v"]
+curve = SubResource("Curve_whgt8")
+
+[sub_resource type="Curve" id="Curve_rkal7"]
+_data = [Vector2(0, 0.290909), 0.0, 0.0, 0, 0, Vector2(0.465318, 1), 0.0, 0.0, 0, 0, Vector2(0.950867, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wpohp"]
+curve = SubResource("Curve_rkal7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_08wgr"]
+lifetime_randomness = 0.5
+emission_shape = 4
+emission_point_count = 1
+direction = Vector3(1, 1, 1)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 8.0
+angle_max = 180.0
+angle_curve = SubResource("CurveTexture_lml1v")
+scale_min = 0.0
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_wpohp")
+
+[sub_resource type="PrismMesh" id="PrismMesh_wc48c"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ot3nl"]
+
+[sub_resource type="Gradient" id="Gradient_gc3cj"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l2vsu"]
+gradient = SubResource("Gradient_gc3cj")
+
+[sub_resource type="Curve" id="Curve_r21fo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.284519, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ipj4j"]
+curve = SubResource("Curve_r21fo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ydy5x"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_ipj4j")
+color_ramp = SubResource("GradientTexture1D_l2vsu")
+
+[sub_resource type="TorusMesh" id="TorusMesh_3aty6"]
+inner_radius = 1.1
+
+[node name="EnemyExplosion" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_rsw3r")
+amount = 12
+sub_emitter = NodePath(".")
+lifetime = 0.5
+speed_scale = 0.7
+explosiveness = 1.0
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_08wgr")
+draw_pass_1 = SubResource("PrismMesh_wc48c")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+visible = false
+material_override = SubResource("StandardMaterial3D_ot3nl")
+amount = 1
+sub_emitter = NodePath(".")
+lifetime = 0.8
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_ydy5x")
+draw_pass_1 = SubResource("TorusMesh_3aty6")

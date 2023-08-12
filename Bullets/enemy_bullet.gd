@@ -1,7 +1,8 @@
 extends CharacterBody3D
 class_name EnemyBullet
 @export var damage: float = 5
-@export var speed: float = 8
+@export var speed: float = 1
+@export var bullet_speed: float = 6
 @export var deleteOnContact: bool = true
 @export var spawnOffsetz: float = 0
 @export var rotateSelf: bool
@@ -10,6 +11,7 @@ var direction: Vector3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if direction == null or direction == Vector3(0,0,0):
+		print("nulllllllllllllllllllllllllllllllllll")
 		direction.z = 1
 		position.z += spawnOffsetz
 		
@@ -22,7 +24,7 @@ func rotateBullet():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	velocity = direction * speed
+	velocity = direction * bullet_speed
 	move_and_slide()
 	rotateBullet()
 

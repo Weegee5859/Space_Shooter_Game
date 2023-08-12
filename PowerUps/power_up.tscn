@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7ywhcpq8smqu"]
+
+[ext_resource type="Script" path="res://PowerUps/PowerUp.gd" id="1_1tkvk"]
+
+[node name="PowerUp" type="CharacterBody3D"]
+script = ExtResource("1_1tkvk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

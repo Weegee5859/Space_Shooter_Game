@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3gr7ggit12l5"]
+[gd_scene load_steps=4 format=3 uid="uid://b3gr7ggit12l5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3fvju"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_81rbs"]
 emission_shape = 1
@@ -15,6 +17,7 @@ scale_max = 0.1
 [node name="StarParticle" type="Node3D"]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_3fvju")
 sub_emitter = NodePath(".")
 process_material = SubResource("ParticleProcessMaterial_81rbs")
 draw_pass_1 = SubResource("BoxMesh_5v7ql")

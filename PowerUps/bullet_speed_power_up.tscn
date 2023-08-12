@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://6e5r77x7eyfw"]
+
+[ext_resource type="PackedScene" uid="uid://b7ywhcpq8smqu" path="res://PowerUps/power_up.tscn" id="1_1xcgm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_p3qv2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n7cwm"]
+
+[node name="BulletSpeedPowerUp" instance=ExtResource("1_1xcgm")]
+
+[node name="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_p3qv2")
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_n7cwm")

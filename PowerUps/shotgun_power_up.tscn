@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://brb8lbtn3u16t"]
+
+[ext_resource type="PackedScene" uid="uid://b7ywhcpq8smqu" path="res://PowerUps/power_up.tscn" id="1_fny1e"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1i5qb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ob4q"]
+
+[node name="ShotgunPowerUp" instance=ExtResource("1_fny1e")]
+shotgun_power_up = true
+
+[node name="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -2.18557e-09, -1, 0, 0.05, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_1i5qb")
+
+[node name="Area3D" parent="." index="1"]
+collision_layer = 4
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("BoxShape3D_3ob4q")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

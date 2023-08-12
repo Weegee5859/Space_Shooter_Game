@@ -1,13 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwydppvv5gfoi"]
+[gd_scene load_steps=6 format=3 uid="uid://bwydppvv5gfoi"]
 
 [ext_resource type="PackedScene" uid="uid://ogm4aeymx1in" path="res://Bullets/bullet.tscn" id="1_axfx5"]
 [ext_resource type="Script" path="res://Bullets/enemy_bullet.gd" id="2_byg04"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_kpdav"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hudib"]
+albedo_color = Color(1, 0.172549, 0.0156863, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oeuxb"]
+
 [node name="EnemyBullet" instance=ExtResource("1_axfx5")]
 script = ExtResource("2_byg04")
-speed = 8.0
+bullet_speed = 6.0
 rotateSelf = false
 
 [node name="Area3D" parent="." index="0"]
 collision_layer = 16
 collision_mask = 2
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("BoxShape3D_kpdav")
+
+[node name="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_hudib")
+mesh = SubResource("BoxMesh_oeuxb")
+
+[node name="DeleteSelfTimer" parent="." index="2"]
+wait_time = 7.0
+
+[node name="OmniLight3D" parent="." index="3"]
+transform = Transform3D(-1, 0, 0, 0, 1, -8.74228e-08, 0, 8.74228e-08, 1, 0, 0, 0)
+light_color = Color(1, 0.160784, 0, 1)
+light_energy = 3.0

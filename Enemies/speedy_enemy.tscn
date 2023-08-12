@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpa77v28olapb"]
+
+[ext_resource type="PackedScene" uid="uid://c5m0g0yo0410f" path="res://Enemies/enemy.tscn" id="1_8qs2i"]
+[ext_resource type="Script" path="res://Enemies/SpeedyEnemy.gd" id="2_onqy1"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_mm24u"]
+
+[node name="SpeedyEnemy" instance=ExtResource("1_8qs2i")]
+script = ExtResource("2_onqy1")
+
+[node name="MeshInstance3D" parent="." index="0"]
+mesh = SubResource("PrismMesh_mm24u")
+
+[node name="state_timer" type="Timer" parent="." index="3"]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="state_timer" to="." method="_on_state_timer_timeout"]

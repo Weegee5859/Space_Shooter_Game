@@ -7,3 +7,15 @@ script = ExtResource("1_2k3c1")
 
 [node name="SpawnCooldownTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="increaseQuantityTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="addNewEnemyTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="increaseEnemySpawnRateTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="increaseQuantityTimer" to="." method="_on_increase_quantity_timer_timeout"]
+[connection signal="timeout" from="addNewEnemyTimer" to="." method="_on_add_new_enemy_timer_timeout"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dro5diqjiseal"]
+
+[ext_resource type="Script" path="res://Resources/Global.gd" id="1_kjvma"]
+
+[node name="Global" type="Node"]
+script = ExtResource("1_kjvma")
